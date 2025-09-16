@@ -19,44 +19,11 @@ def clear_screen():
     else:
         print("Screen clearing not supported for this operating system.")
 
-# OS check (temporary until Linux/macOS support is added)
-if platform == "linux" or platform == "linux2":
-    print("Linux is not currently supported. Sorry about that!")
-    sys.exit()
-elif platform == "darwin":
-    print("macOS is not currently supported. Sorry about that!")
-    sys.exit()
-    
-# Ask for the SD card drive letter, back up the database, and try to connect to it
 clear_screen()
 print_header()
-sdcard = input("Enter SD card drive letter: ")
-dbfile = sdcard+":\Saves\CurrentProfile\play_activity\play_activity_db.sqlite"
-if os.path.isfile(dbfile):
-    clear_screen()
-    print_header()
-    print("The play activity database is found!")
-    try:
-        shutil.copy(dbfile, sdcard+":\Saves\CurrentProfile\play_activity\play_activity_db.sqlite.bak")
-    except:
-        print("An exception occurred creating a backup. There may be permissions issues with the SD card.")
-        input("Press Enter to exit...")
-        sys.exit()
-    
-    try:
-        conn=sqlite3.connect(dbfile)
-    except:
-        print("An exception occurred connecting to the database. There may be permissions issues with the SD card.")
-        input("Press Enter to exit...")
-        sys.exit()
-    
-    print("A backup was created: "+sdcard+":\Saves\CurrentProfile\play_activity\play_activity_db.sqlite.bak\n")
-    input("Press Enter to continue...")
-    c=conn.cursor()
-else:
-    print("The play activity database was not found! Exiting...")
-    sys.exit()
-
+dbfile = "./play_activity_db.sqlite"
+conn=sqlite3.connect(dbfile)
+c=conn.cursor()
 # Merge play activity entries
 def merge_entries():
     src_game_id = input("\nType the SOURCE game ID (this will be merged with the DESTINATION game ID): ")
