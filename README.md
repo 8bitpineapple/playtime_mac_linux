@@ -11,14 +11,12 @@ Supported operations:
 ## Getting Started
 [Download the latest version of Python](https://www.python.org/downloads/) for your operating system, connect your OnionUI SD card to your computer, and 
 
-Copy your database from your SD card onto your pc
++ Copy your database from your SD card onto your pc
 
-Database is located on your sd card in /Saves/CurrentProfile/play_activity
++ Database is located on your sd card in /Saves/CurrentProfile/play_activity
 
-Place playtime.py in the same directory
++ Place playtime.py in the same directory
 
-run `python3 playtime.py`
++ run `python3 playtime.py`
 
-Reupload your now updated database to your device.
-
-NOTE: For now only Windows is supported. Support for macOS and Linux is coming soon.
++ Reupload your now updated database to your device.
